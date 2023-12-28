@@ -1,6 +1,9 @@
 import React from 'react';
 
-export interface UserContract {}
+export interface UserContract {
+  id?: number;
+  orgId?: string;
+}
 
 export interface AuthState {
   user?: UserContract;
