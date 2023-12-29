@@ -7,7 +7,7 @@ export function useUser() {
   const update = (newState: Partial<UserContract>) => {
     updateState({ user: { ...user, ...newState } });
   };
-  const isSignedIn = !!user;
+  const isSignedIn = !!user?.uid;
   // TODO: add property isLoaded
   return { isSignedIn, user, update };
 }
