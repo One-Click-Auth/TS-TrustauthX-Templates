@@ -9,6 +9,7 @@ import { ProtectedPage } from './routes/protected-page.tsx';
 import { ProfilePage } from './routes/profile-page.tsx';
 import { AuthCheck } from './components/auth-check.tsx';
 import { UserPage } from './routes/user-page.tsx';
+import { AuthRequire } from './components/auth-require.tsx';
 
 const API_KEY: string = import.meta.env.VITE_API_KEY;
 const API_SECRET: string = import.meta.env.VITE_API_SECRET;
@@ -26,11 +27,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element: <ProfilePage />,
+        element: (
+          <AuthRequire>
+            <ProfilePage />
+          </AuthRequire>
+        ),
       },
       {
         path: 'protected',
-        element: <ProtectedPage />,
+        element: (
+          <AuthRequire>
+            <ProtectedPage />
+          </AuthRequire>
+        ),
       },
       {
         path: 'user',
