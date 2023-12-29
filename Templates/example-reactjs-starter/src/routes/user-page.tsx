@@ -10,7 +10,7 @@ export function UserPage() {
 
   // TODO: comparse useEffect with normal runOnlyOnce
   useEffect(() => {
-    if (user) return;
+    if (isSignedIn) return;
     const code = searchParams.get('code');
     if (!code) {
       throw Error('Missing Code.');

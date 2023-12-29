@@ -48,7 +48,7 @@ export const AuthContextProvider = (props: Props) => {
   const getEditProfileURL = async (token: string) => {
     return await authLiteClient.generateEditUserUrl(
       token,
-      'http://127.0.0.1:3535/re-auth'
+      'http://127.0.0.1:3535'
     );
   };
 
