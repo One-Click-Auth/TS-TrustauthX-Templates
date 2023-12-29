@@ -45,6 +45,13 @@ export const AuthContextProvider = (props: Props) => {
     setToken(user.access_token);
   };
 
+  const getEditProfileURL = async (token: string) => {
+    return await authLiteClient.generateEditUserUrl(
+      token,
+      'http://127.0.0.1:3535/re-auth'
+    );
+  };
+
   /**
    * Info:
    * Even if user access_token exists,
@@ -54,7 +61,14 @@ export const AuthContextProvider = (props: Props) => {
 
   return (
     <AuthContext.Provider
-      value={{ ...state, updateState, signout, signin, loginURL }}
+      value={{
+        ...state,
+        updateState,
+        signout,
+        signin,
+        getEditProfileURL,
+        loginURL,
+      }}
     >
       {props.children}
     </AuthContext.Provider>
