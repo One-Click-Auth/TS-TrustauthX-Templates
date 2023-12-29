@@ -1,15 +1,20 @@
+import Cookies from 'js-cookie';
 import { useAuthContext } from '../context/auth-context';
 
 export function useAuth() {
   const AuthContext = useAuthContext();
   if (!AuthContext) throw Error('Missing AuthContext');
-  const { user } = AuthContext;
-  const isSignedIn = !!user;
+  const { user, signout, signin, loginURL } = AuthContext;
+  const isSignedIn = !!user?.uid;
   const userId = user?.uid;
   const orgId = user?.orgId;
-  const signOut = () => {};
-  // TODO: return token
-  const getToken = () => void 0;
+  const getToken = () => {
+    const accessToken = Cookies.get('access_token');
+    if (!accessToken) {
+      throw Error('Missing Access Token');
+    }
+    return accessToken;
+  };
   // TODO: add property isLoaded, sessionId, orgRole, orgPermissions, orgSlug, has,
-  return { isSignedIn, userId, orgId, signOut, getToken };
+  return { isSignedIn, userId, orgId, loginURL, signout, signin, getToken };
 }
