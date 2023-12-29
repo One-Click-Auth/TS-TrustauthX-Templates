@@ -5,8 +5,8 @@ export function useAuth() {
   const AuthContext = useAuthContext();
   if (!AuthContext) throw Error('Missing AuthContext');
   const { user, signout, signin, loginURL } = AuthContext;
-  const isSignedIn = !!user?.uid;
   const userId = user?.uid;
+  const isSignedIn = !!userId;
   const orgId = user?.orgId;
   const getToken = () => {
     const accessToken = Cookies.get('access_token');
