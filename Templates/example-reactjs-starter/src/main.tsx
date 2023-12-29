@@ -10,6 +10,7 @@ import { ProfilePage } from './routes/profile-page.tsx';
 import { AuthCheck } from './components/auth-check.tsx';
 import { UserPage } from './routes/user-page.tsx';
 import { AuthRequire } from './components/auth-require.tsx';
+import { LoginPage } from './routes/login-page.tsx';
 
 const API_KEY: string = import.meta.env.VITE_API_KEY;
 const API_SECRET: string = import.meta.env.VITE_API_SECRET;
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <AuthCheck />,
+        element: (
+          <AuthCheck>
+            <LoginPage />
+          </AuthCheck>
+        ),
       },
       {
         path: 'profile',
