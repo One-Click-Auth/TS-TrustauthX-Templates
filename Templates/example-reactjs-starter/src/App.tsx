@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import './App.css';
-import { LoginStatus } from './components/login-status';
+import { LoginStatus } from './components/auth-status';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
               <Link to="/profile">Profile</Link>
             </li>
             <li>
-              <Link to="/some-protected-route">A Protected Route</Link>
+              <Link to="/protected">A Protected Route</Link>
             </li>
           </ul>
         </nav>
