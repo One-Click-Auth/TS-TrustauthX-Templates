@@ -40,3 +40,26 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Base styles for all screen sizes */
+.grid-container {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.grid-item {
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+@media screen and (min-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

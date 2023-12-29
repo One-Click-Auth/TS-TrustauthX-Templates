@@ -5,7 +5,7 @@ export function useAuth() {
   if (!AuthContext) throw Error('Missing AuthContext');
   const { user } = AuthContext;
   const isSignedIn = !!user;
-  const userId = user?.id;
+  const userId = user?.uid;
   const orgId = user?.orgId;
   const signOut = () => {};
   // TODO: return token

@@ -1,8 +1,12 @@
 import React from 'react';
 
 export interface UserContract {
-  id?: number;
+  name?: string;
+  uid?: string;
   orgId?: string;
+  scope?: string;
+  img?: string;
+  email?: string;
 }
 
 export interface AuthState {

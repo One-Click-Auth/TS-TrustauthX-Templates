@@ -5,6 +5,9 @@ import RootLayout from './App.tsx';
 import './index.css';
 import { AuthContextProvider } from './context/auth-context-provider.tsx';
 import ErrorPage from './error-page.tsx';
+import { LoginPage } from './routes/login-page.tsx';
+import { SomePage } from './routes/some-page.tsx';
+import { ProfilePage } from './routes/profile-page.tsx';
 
 const API_KEY: string = import.meta.env.VITE_API_KEY;
 const API_SECRET: string = import.meta.env.VITE_API_SECRET;
@@ -15,6 +18,20 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'profile',
+        element: <ProfilePage />,
+      },
+      {
+        path: 'some-protected-route',
+        element: <SomePage />,
+      },
+    ],
   },
 ]);
 
