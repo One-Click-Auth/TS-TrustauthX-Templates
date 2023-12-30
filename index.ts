@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Usage: npx create-my-template my-app --next
+// Usage: npx create-my-template my-app --next| --react-ts
 
 const { execSync } = require('child_process');
 const fs = require('fs-extra');
@@ -9,7 +9,7 @@ const spawn = require('child_process').spawn;
 
 if (process.argv.length < 4) {
   console.log(
-    'You have to provide a name to your app and the template to use.',
+    'You have to provide a name to your app and the template to use.'
   );
   console.log('For example :');
   console.log('    npx trustauthx my-app --next');
@@ -24,8 +24,10 @@ const getTemplateFlagDescription = (template: string) => {
   switch (template) {
     case '--next':
       return 'Next.js template with TrustAuthX SDK';
+    case '--react-ts':
+      return 'ReactJs-Typescript template with TrustAuthX SDK';
     default:
-      return 'Invalid template. Only --next is supported.';
+      return 'Invalid template. Only --next and --react-ts is supported.';
   }
 };
 
@@ -47,12 +49,12 @@ const main = () => {
       __dirname,
       isProd ? '..' : '.',
       'Templates',
-      'NextJS-Example-SSR',
+      'NextJS-Example-SSR'
     );
 
     // Copy the contents of the template directory into the appPath directory
     console.log(
-      `Creating a new ${getTemplateFlagDescription(template)} in \n${appPath}.`,
+      `Creating a new ${getTemplateFlagDescription(template)} in \n${appPath}.`
     );
     fs.copySync(templateDir, appPath);
 
@@ -66,6 +68,30 @@ const main = () => {
     console.log('Run the App:');
     console.log('cd', appName);
     console.log('    npm run dev');
+  } else if (template === '--react-ts') {
+    if (!require.main) {
+      return;
+    }
+    const isProd = require.main.filename.includes('dist');
+    const templateDir = path.resolve(
+      __dirname,
+      isProd ? '..' : '.',
+      'Templates',
+      'example-reactjs-starter'
+    );
+    console.log(
+      `Creating a new ${getTemplateFlagDescription(template)} in \n${appPath}.`
+    );
+    fs.copySync(templateDir, appPath);
+
+    process.chdir(appPath);
+    console.log('Installing dependencies...');
+    execSync('npm install', { stdio: 'inherit' });
+    console.log('Dependencies installed.');
+
+    console.log('Run the App:');
+    console.log('cd', appName);
+    console.log('    npm start');
   } else {
     console.error('Invalid template. Only --next is supported.');
     process.exit(1);
