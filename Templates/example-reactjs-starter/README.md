@@ -1,39 +1,27 @@
 # Example ReactJs Starter
 
-This template provides a minimal setup to get React working in Vite with HMR and
-some ESLint rules.
+**This guide demonstrates a simple example of implementing TrustAuthX in a ReactJs-Typescript app.** 
+<br />
+It covers user authentication functionalities like sign-in, sign-out, profile editing, and route protection using the TrustAuthX NPM package.
 
-Currently, two official plugins are available:
+## Installation Process:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md)
-  uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
-  uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Setting Up
 
-## Expanding the ESLint configuration
+- **Install dependencies:** Run `npm install` in your project directory.
+- **Create `.env` file:** Add your TrustAuthX credentials:
+  - `VITE_ORG_ID={{your_org_id}}`
+  - `VITE_API_KEY={{your_api_key}}`
+  - `VITE_API_SECRET={{your_api_secret}}`
+- **Configure callback URL:** Update the callback URL in your TrustAuthX dashboard to point to your app's port (default: 3535).
 
-If you are developing a production application, we recommend updating the
-configuration to enable type aware lint rules:
+### 2. Running the Development Server
 
-- Configure the top-level `parserOptions` property like this:
+- Open a terminal in your project directory.
+- Set the port environment variable for development server launch: `export PORT=3535`.
+- Start the ViteJs development server: `npm run dev`.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+### 3. Additional Notes
 
-- Replace `plugin:@typescript-eslint/recommended` to
-  `plugin:@typescript-eslint/recommended-type-checked` or
-  `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install
-  [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and
-  add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends`
-  list
+- Remember to adjust the callback URL configuration based on your chosen port if different from the default 3535.
+- Explore the [TrustAuthX documentation](https://docs.trustauthx.com/Integration/Python/SDK-class-structure-insight) for detailed API references and advanced use cases.
