@@ -1,5 +1,5 @@
 {
-  "name": "trustauthx-cli",
+  "name": "create-trustauthx-sdk",
   "version": "1.0.0",
   "description": "CLI tool for creating trustauthx sdk examples",
   "main": "dist/index.js",
